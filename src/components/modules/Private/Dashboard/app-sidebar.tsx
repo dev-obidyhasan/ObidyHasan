@@ -10,8 +10,8 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
-import { Button } from "./ui/button";
-import DashboardItem from "./shared/DashboardItem";
+import { Button } from "../../../ui/button";
+import DashboardItem from "./DashboardItem";
 import Link from "next/link";
 
 const route = {

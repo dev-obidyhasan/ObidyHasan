@@ -11,7 +11,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/components/modules/Private/Dashboard/app-sidebar";
 import Link from "next/link";
 
 export default function DashboardLayout({
