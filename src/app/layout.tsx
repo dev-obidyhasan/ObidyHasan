@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Obidy Hasan Naim - Portfolio",
+  title: "Obidy Hasan Naim | Full-Stack Developer",
   description: `Full-Stack Developer specializing in the MERN stack with expertise in Next.js. Skilled in developing
  e-commerce, logistics, and real estate platforms that improve efficiency and user experience.
  Adept at problem-solving, with 200+ algorithmic challenges solved on Codeforces and LeetCode.`,
