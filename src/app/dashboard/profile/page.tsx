@@ -19,7 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 const loginSchema = z.object({
   name: z.string().optional(),
-  email: z.email().optional(),
+  email: z.string().optional(),
   imageUrl: z.string().optional(),
   facebookUrl: z.string().optional(),
   twitterUrl: z.string().optional(),
