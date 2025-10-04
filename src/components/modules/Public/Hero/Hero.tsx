@@ -3,7 +3,7 @@ import Earth from "@/components/ui/globe";
 
 const HeroSection = () => {
   return (
-    <>
+    <div id="home">
       {/* Hero Section */}
       <section className="relative h-full min-h-screen text-white max-w-6xl mx-auto">
         <div className="w-full min-h-screen">
@@ -73,7 +73,7 @@ const HeroSection = () => {
           <Earth className="max-w-5xl z-[0] w-full h-full" />
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

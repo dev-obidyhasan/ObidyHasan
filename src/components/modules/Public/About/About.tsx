@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 const AboutSection = () => {
   return (
-    <div>
+    <div id="about">
       <div className="relative z-40 w-full text-white text-center bg-">
         <div className="flex flex-col items-center gap-10 p-4 mx-auto max-w-6xl md:flex-row">
           <div className="w-full sm:w-4/6 md:w-2/6">

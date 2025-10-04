@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/shared/Footer";
+import { ThemeProvider } from "@/providers/themeProvider";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -21,10 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`${poppins.className} bg-black`}>
         <main>{children}</main>
-        <Footer />
       </body>
     </html>
   );

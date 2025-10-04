@@ -75,7 +75,7 @@ const ReviewCard = ({
 
 const SkillSection = () => {
   return (
-    <>
+    <div id="skills">
       <div className="relative w-full text-center pt-20 pb-10 px-4 max-w-6xl mx-auto">
         <div className="text-center">
           <h1 className="text-2xl font-semibold sm:text-3xl font-fira">
@@ -101,7 +101,7 @@ const SkillSection = () => {
           <div className="from-black to-transparent pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
