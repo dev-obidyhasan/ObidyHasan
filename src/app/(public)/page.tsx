@@ -2,7 +2,9 @@ import AboutSection from "@/components/modules/Public/Hero/About";
 import HeroSection from "@/components/modules/Public/Hero/Hero";
 import SkillSection from "@/components/modules/Public/Skill/Skill";
 import Navbar from "@/components/shared/Navbar";
-import ProjectsSection from "../dashboard/project/page";
+import ContactSection from "@/components/modules/Public/Contact/Contact";
+import ProjectSection from "@/components/modules/Public/Project/Project";
+import BlogSection from "@/components/modules/Public/Blog/Blog";
 
 export default function HomePage() {
   return (
@@ -11,7 +13,9 @@ export default function HomePage() {
       <HeroSection />
       <AboutSection />
       <SkillSection />
-      <ProjectsSection />
+      <ProjectSection />
+      <BlogSection />
+      <ContactSection />
     </div>
   );
 }

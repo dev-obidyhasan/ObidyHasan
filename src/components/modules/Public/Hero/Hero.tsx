@@ -5,20 +5,23 @@ const HeroSection = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-full min-h-screen text-white max-w-7xl mx-auto">
+      <section className="relative h-full min-h-screen text-white max-w-6xl mx-auto">
         <div className="w-full min-h-screen">
           {/* Hero Content */}
           <section>
-            <div className="flex flex-col items-center justify-center px-5 py-20 mx-auto text-center mt-14 md:mt-20 max-w-7xl">
+            <div className="flex flex-col items-center justify-center px-5 py-20 mx-auto text-center mt-12 max-w-6xl">
               <h2 className="flex items-center gap-2 mt-2 text-lg text-dart03">
-                <span>This is</span>
+                <span>Hey There, This is</span>
                 <span className="text-xl font-medium text-light01 font-fira">
                   Obidy Hasan Naim
                 </span>
               </h2>
-              <h1 className="font-fira font-semibold text-4xl sm:text-5xl md:text-[56px] my-5">
+              <h1 className="font-fira font-semibold text-4xl sm:text-5xl md:text-7xl my-5">
                 Full-Stack Web Developer
               </h1>
+              {/* <span className="pointer-events-none bg-gradient-to-b to-black from-gray-300/100 bg-clip-text text-center text-8xl leading-none font-semibold whitespace-pre-wrap text-transparent dark:from-white dark:to-slate-900/10">
+                Meteors
+              </span> */}
               <p className="max-w-xl mx-auto text-dart03">
                 My goal is to{" "}
                 <span className="text-light01">write maintainable, clean</span>{" "}

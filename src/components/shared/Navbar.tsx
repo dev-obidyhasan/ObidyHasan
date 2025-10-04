@@ -74,7 +74,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="w-full h-full max-w-7xl mx-auto sticky top-4 rounded-md bg-black z-[100] text-white px-4 py-2 border border-muted/10 shadow-md">
+    <nav className="w-full h-full max-w-[1120px] mx-auto sticky top-4 rounded-md bg-black z-[100] text-white px-4 py-2 border border-muted/10 shadow-md">
       <div className="flex items-center justify-between ">
         <Link href={"/"}>
           <h1 className={`${jersey.className} text-4xl`}>Naim</h1>

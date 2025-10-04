@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 const AboutSection = () => {
   return (
     <div>
-      <div className="relative z-50 w-full min-h-screen text-white text-center bg-black/70">
-        <div className="flex flex-col items-center gap-10 px-5 py-20 mx-auto max-w-7xl md:flex-row">
+      <div className="relative z-40 w-full text-white text-center bg-">
+        <div className="flex flex-col items-center gap-10 p-4 mx-auto max-w-6xl md:flex-row">
           <div className="w-full sm:w-4/6 md:w-2/6">
             <figure className="w-full h-[500px]">
               <img
