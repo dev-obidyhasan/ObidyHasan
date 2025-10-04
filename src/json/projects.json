@@ -1,0 +1,160 @@
+[
+  {
+    "_id": "6",
+    "image": [
+      "https://res.cloudinary.com/drkyqxkqw/image/upload/v1756708631/deliverx2_quuqfj.png",
+      "https://res.cloudinary.com/drkyqxkqw/image/upload/v1756708630/deliverx9_yym5ks.png",
+      "https://res.cloudinary.com/drkyqxkqw/image/upload/v1756708631/deliverx8_tfwndd.png",
+      "https://res.cloudinary.com/drkyqxkqw/image/upload/v1756708629/deliverx6_kbfx7k.png",
+      "https://res.cloudinary.com/drkyqxkqw/image/upload/v1756708630/deliverx5_cg1fvq.png"
+    ],
+    "name": "DeliverX – Modern Parcel Delivery System",
+    "description": "DeliverX is a modern parcel delivery platform that connects senders, receivers, and admins in one seamless system. This project focuses on the frontend, built with React, Redux Toolkit, and RTK Query, with a clean and responsive UI using Tailwind CSS.",
+    "liveLink": "https://parcel-delivery-system-frontend.vercel.app",
+    "technology": [
+      "Tailwind",
+      "React",
+      "React Router",
+      "Node JS",
+      "Express JS",
+      "MongoDB",
+      "JWT",
+      "Axios",
+      "RTK Query",
+      "Redux Toolkit",
+      "Vercel"
+    ],
+    "links": {
+      "frontendRepLink": "https://github.com/obidyhasan/Parcel-Delivery-System-Frontend",
+      "backendRepLink": "https://github.com/obidyhasan/Parcel-Delivery-System-Backend"
+    }
+  },
+  {
+    "_id": "5",
+    "image": [
+      "https://res.cloudinary.com/drkyqxkqw/image/upload/v1756709036/Realty-Flow-Real-Estate-Platform-01-20-2025_06_58_PM_bjoksf.png",
+      "https://res.cloudinary.com/drkyqxkqw/image/upload/v1756709035/Realty-Flow-All-Properties-01-20-2025_06_59_PM_w3sv71.png",
+      "https://res.cloudinary.com/drkyqxkqw/image/upload/v1756709035/Realty-Flow-Register-01-20-2025_07_01_PM_cpq2hf.png",
+      "https://res.cloudinary.com/drkyqxkqw/image/upload/v1756709035/Realty-Flow-Advertise-Property-01-20-2025_07_00_PM_yi0q7b.png"
+    ],
+    "name": "RealtyFlow – Streamlining Real Estate Transactions",
+    "description": "RealtyFlow is a modern real estate platform designed to simplify property buying, selling, and renting. With a user-friendly interface and advanced search filters, it connects buyers, sellers, and agents efficiently. The platform offers seamless property listing management, interactive maps, and secure messaging to enhance the real estate experience.",
+    "liveLink": "https://realty-flow-platform.web.app",
+    "technology": [
+      "Tailwind",
+      "React",
+      "DaisyUI",
+      "React Router",
+      "Node JS",
+      "Express JS",
+      "MongoDB",
+      "JWT",
+      "Firebase",
+      "TanStack Query",
+      "Axios",
+      "Vercel"
+    ],
+    "links": {
+      "frontendRepLink": "https://github.com/obidyhasan/Realty-Flow",
+      "backendRepLink": "https://github.com/obidyhasan/Realty-Flow-Server"
+    }
+  },
+  {
+    "_id": "1",
+    "image": [
+      "https://i.ibb.co.com/mJzYhV2/Tastr-12-25-2024-04-56-PM.png",
+      "https://i.ibb.co.com/7Q1pkyN/Tastr-12-25-2024-04-57-PM-1.png",
+      "https://i.ibb.co.com/80Y5B7k/Tastr-12-25-2024-04-57-PM-2.png",
+      "https://i.ibb.co.com/NVq4KYq/Tastr-12-25-2024-04-58-PM-2.png",
+      "https://i.ibb.co.com/5BgVg6L/Tastr-12-25-2024-04-57-PM.png"
+    ],
+    "name": "Tastr - Restaurant Management System",
+    "description": "The purpose of this project is to provide a seamless platform for food enthusiasts to browse through an extensive menu, learn about cuisines, and order their favorite meals.",
+    "liveLink": "https://tastr-client.web.app/",
+    "technology": [
+      "Tailwind",
+      "React",
+      "DaisyUI",
+      "React Router",
+      "Node JS",
+      "Express JS",
+      "MongoDB",
+      "JWT",
+      "Axios"
+    ],
+    "links": {
+      "frontendRepLink": "https://github.com/obidyhasan/Tastr",
+      "backendRepLink": "https://github.com/obidyhasan/Tastr-Server"
+    }
+  },
+  {
+    "_id": "2",
+    "image": [
+      "https://i.ibb.co.com/5v7PxJq/Equi-Sports-01-09-2025-02-29-AM.png",
+      "https://i.ibb.co.com/fN751SQ/Equi-Sports-01-09-2025-02-30-AM.png",
+      "https://i.ibb.co.com/5LkSYkN/Equi-Sports-01-09-2025-02-31-AM.png",
+      "https://i.ibb.co.com/Fgg67Ns/Equi-Sports-01-09-2025-02-30-AM-2.png"
+    ],
+    "name": "EquiSports - Sports Equipment Online Store",
+    "description": "EquiSports is an online platform offering a wide range of premium sports equipment and accessories. Our mission is to make high-quality gear accessible to athletes and sports enthusiasts everywhere.",
+    "liveLink": "https://equi-sports-client.web.app/",
+    "technology": [
+      "Tailwind",
+      "React",
+      "DaisyUI",
+      "React Router",
+      "Node JS",
+      "Express JS",
+      "MongoDB",
+      "JWT",
+      "Axios"
+    ],
+    "links": {
+      "frontendRepLink": "https://github.com/obidyhasan/Equi-Sports",
+      "backendRepLink": "https://github.com/obidyhasan/Equi-Sports-Server"
+    }
+  },
+  {
+    "_id": "3",
+    "image": [
+      "https://i.ibb.co.com/qB3bkWW/Jambr-Organix-Superior-Quality-Superior-Taste-01-09-2025-10-33-AM.png",
+      "https://i.ibb.co.com/9n2qHSw/Jambr-Organix-Superior-Quality-Superior-Taste-01-09-2025-10-34-AM.png",
+      "https://i.ibb.co.com/GvmSjCq/Jambr-Organix-Superior-Quality-Superior-Taste-01-09-2025-10-33-AM-1.png",
+      "https://i.ibb.co.com/nRmpLQm/Jambr-Organix-Superior-Quality-Superior-Taste-01-09-2025-10-34-AM-1.png"
+    ],
+    "name": "Jambr Organix - Organic Food Online Store",
+    "description": "Jambr Organix sea moss gel is incredibly versatile. You can add it to smoothies, teas, or juices for a nutritional boost, or incorporate it into your favorite recipes. It can also be used as a topical treatment for skin, helping to moisturize and rejuvenate.",
+    "liveLink": "https://jambrorganix.com/",
+    "technology": ["HTML", "CSS", "PHP", "MySQL", "JavaScript"],
+    "links": {
+      "frontendRepLink": "",
+      "backendRepLink": ""
+    }
+  },
+  {
+    "_id": "4",
+    "image": [
+      "https://i.ibb.co.com/NK9qSzn/Home-Aspireon-01-05-2025-12-35-AM.png",
+      "https://i.ibb.co.com/s3cpVZw/Service-Details-Aspireon-01-05-2025-12-35-AM.png",
+      "https://i.ibb.co.com/SK0RvjR/Profile-Aspireon-01-05-2025-12-36-AM.png"
+    ],
+    "name": "Aspireon - CareerPath Finder",
+    "description": "CareerPath Finder is a professional career counseling platform designed to empower individuals in their career journeys with personalized guidance, expert advice, and tailored resources.",
+    "liveLink": "https://aspireon-assignment.web.app/",
+    "technology": [
+      "Tailwind",
+      "React",
+      "DaisyUI",
+      "React Router",
+      "Node JS",
+      "Express JS",
+      "MongoDB",
+      "JWT",
+      "Axios"
+    ],
+    "links": {
+      "frontendRepLink": "https://github.com/obidyhasan/Aspireon",
+      "backendRepLink": ""
+    }
+  }
+]
