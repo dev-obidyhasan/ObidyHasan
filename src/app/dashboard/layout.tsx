@@ -42,7 +42,7 @@ export default function DashboardLayout({
               </BreadcrumbList>
             </Breadcrumb>
           </header>
-          <div className=" flex flex-1 flex-col gap-4 p-4 bg-muted m-4 rounded-lg">
+          <div className=" flex flex-1 flex-col gap-4 p-4 bg-muted/40 m-4 rounded-lg">
             {children}
           </div>
         </SidebarInset>

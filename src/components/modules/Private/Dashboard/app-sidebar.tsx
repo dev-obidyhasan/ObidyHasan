@@ -20,14 +20,14 @@ const route = {
       items: [
         {
           title: "Profile",
-          url: "/dashboard",
+          url: "/dashboard/profile",
         },
         {
-          title: "Skills",
+          title: "Skill",
           url: "/dashboard/skill",
         },
         {
-          title: "Projects",
+          title: "Project",
           url: "/dashboard/project",
         },
         {
@@ -46,15 +46,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarHeader className="m-2">
           <Link href={"/"} className="flex items-center gap-2">
             <Image
-              src="https://i.ibb.co.com/0yMLT5yH/dd.jpg"
+              src="https://res.cloudinary.com/drkyqxkqw/image/upload/v1756707585/picofme_6_a_rosa65.png"
               alt="profile image"
               width={40}
               height={40}
               className="rounded-full"
             />
             <div>
-              <h1 className="font-bold">Obidy Hasan Naim</h1>
-              <p className="text-xs">Full Stack Developer</p>
+              <h1 className="font-medium">Obidy Hasan Naim</h1>
+              <p className="text-xs text-muted-foreground">
+                Full Stack Developer
+              </p>
             </div>
           </Link>
         </SidebarHeader>
@@ -62,7 +64,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           {route.navMain.map((item, idx) => (
             <SidebarGroup key={idx}>
               <SidebarGroupContent>
-                <SidebarMenu className="space-y-2">
+                <SidebarMenu className="space-y-3">
                   {item.items.map((item, idx) => (
                     <DashboardItem
                       key={idx}
@@ -77,7 +79,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarContent>
         <SidebarRail />
       </div>
-      <div className="p-2">
+      <div className="px-2 py-4">
         <Button className="w-full">Logout</Button>
       </div>
     </Sidebar>
