@@ -16,65 +16,13 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { Input } from "@/components/ui/input";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 
-const skillSchema = z.object({
-  name: z.string().min(1, { message: "Name can't be empty!" }),
-  logoUrl: z.string().min(1, { message: "Logo Url can't be empty!" }),
-  category: z.string().min(1, { message: "Category can't be empty!" }),
-  content: z.string().optional(),
-});
-
 const ProjectDashboardCard = () => {
-  const form = useForm<z.infer<typeof skillSchema>>({
-    resolver: zodResolver(skillSchema),
-    defaultValues: {
-      name: "",
-      logoUrl: "",
-      category: "",
-      content: "",
-    },
-  });
-
-  async function onSubmit(values: z.infer<typeof skillSchema>) {
-    console.log(values);
-  }
-
   return (
     <div className="border p-4 rounded-sm space-y-3">
       <div>
@@ -110,7 +58,7 @@ const ProjectDashboardCard = () => {
         </Button>
         <div className="flex gap-2">
           <Button size={"icon"} variant={"outline"}>
-            <Link href={"/dashboard/project/12"}>
+            <Link href={"/dashboard/project/edit-project"}>
               <MdOutlineEdit />
             </Link>
           </Button>

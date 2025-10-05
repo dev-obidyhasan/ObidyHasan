@@ -1,4 +1,10 @@
+"use client";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { Link as LinkScroll } from "react-scroll";
+import profile from "@/assets/profile.png";
+import { BorderBeam } from "@/components/ui/border-beam";
+import { ShineBorder } from "@/components/ui/shine-border";
 
 const AboutSection = () => {
   return (
@@ -7,8 +13,8 @@ const AboutSection = () => {
         <div className="flex flex-col items-center gap-10 p-4 mx-auto max-w-6xl md:flex-row">
           <div className="w-full sm:w-4/6 md:w-2/6">
             <figure className="w-full h-[500px]">
-              <img
-                src="https://res.cloudinary.com/drkyqxkqw/image/upload/v1756707585/picofme_6_a_rosa65.png"
+              <Image
+                src={profile}
                 className="object-cover w-full h-full rounded-full bg-dart02"
                 alt=""
               />
@@ -38,19 +44,23 @@ const AboutSection = () => {
               {/* Hobbies and Interests */}
               <p>{`When I’m not coding, I enjoy playing video games, exploring new frameworks, and honing my skills to keep pace with industry trends. Want to collaborate or learn more about me? Check out my projects below!`}</p>
             </div>
-            {/* <LinkScroll
-            to={"projects"}
-            spy={true}
-            smooth={true}
-            offset={-50}
-            duration={500}
-            className="mt-8 btn btn-outline text-light01 font-fira"
-          >
-            Explore Projects
-          </LinkScroll> */}
-            <Button className="mt-8 btn btn-outline text-light01 font-fira">
-              Explore Projects
-            </Button>
+            <div className="mt-10">
+              <LinkScroll
+                to={"projects"}
+                spy={true}
+                smooth={true}
+                offset={-50}
+                duration={500}
+                className="relative mt-8 btn btn-outline text-light01 font-fira"
+              >
+                <div className="relative w-max rounded-full">
+                  <Button variant={"ghost"} className="rounded-full px-6 py-5">
+                    Explore Projects
+                  </Button>
+                  <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+                </div>
+              </LinkScroll>
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { Marquee } from "@/components/ui/marquee";
-import { cn } from "@/lib/utils";
+import { SkillCard } from "./SkillCard";
 
 const reviews = [
   {
@@ -39,39 +39,9 @@ const reviews = [
     img: "https://avatar.vercel.sh/james",
   },
 ];
+
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
-
-const ReviewCard = ({
-  img,
-  name,
-  username,
-  body,
-}: {
-  img: string;
-  name: string;
-  username: string;
-  body: string;
-}) => {
-  return (
-    <figure
-      className={cn(
-        "relative h-full w-64 cursor-pointer overflow-hidden border-gray-50/[.1] bg-gray-50/[.10] hover:bg-gray-50/[.15]  hover:bg-gray-950/[.05] rounded-xl border p-4"
-      )}
-    >
-      <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full" width="32" height="32" alt="" src={img} />
-        <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
-            {name}
-          </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username}</p>
-        </div>
-      </div>
-      <blockquote className="mt-2 text-sm">{body}</blockquote>
-    </figure>
-  );
-};
 
 const SkillSection = () => {
   return (
@@ -87,14 +57,19 @@ const SkillSection = () => {
           </p>
         </div>
         <div className="relative mt-10 flex w-full flex-col items-center justify-center overflow-hidden">
-          <Marquee pauseOnHover className="[--duration:20s] space-y-5">
+          <Marquee pauseOnHover className="[--duration:20s]">
             {firstRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
+              <SkillCard key={review.username} {...review} />
             ))}
           </Marquee>
           <Marquee reverse pauseOnHover className="[--duration:20s]">
             {secondRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
+              <SkillCard key={review.username} {...review} />
+            ))}
+          </Marquee>
+          <Marquee pauseOnHover className="[--duration:20s]">
+            {firstRow.map((review) => (
+              <SkillCard key={review.username} {...review} />
             ))}
           </Marquee>
           <div className="from-black to-transparent pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>

@@ -1,12 +1,16 @@
+import { ShineBorder } from "@/components/ui/shine-border";
+import Image from "next/image";
+
 const ProjectCard = () => {
   return (
     <>
       <div className="relative duration-300 transform rounded-md cursor-pointer hover:-translate-y-3">
+        <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
         <figure>
-          <img
+          <Image
             src=""
             className="w-full h-[500px] object-cover object-top rounded-md"
-            alt=""
+            alt="project image"
           />
         </figure>
 

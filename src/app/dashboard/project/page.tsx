@@ -10,11 +10,11 @@ const ProjectPage = () => {
         <h1 className="font-medium text-2xl">Projects</h1>
 
         <Button variant="default">
-          <Link href={"/dashboard/project/12"}>Add Project</Link>
+          <Link href={"/dashboard/project/add-project"}>Add Project</Link>
         </Button>
       </div>
       {/* All Project */}
-      <div className="mt-7 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className="mt-7 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
         <ProjectDashboardCard />
         <ProjectDashboardCard />
         <ProjectDashboardCard />

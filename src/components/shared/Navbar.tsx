@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { Jersey_10 } from "next/font/google";
 import { Button } from "../ui/button";
 import { MagicCard } from "../ui/magic-card";
-import { BorderBeam } from "../ui/border-beam";
+import { usePathname } from "next/navigation";
 
 const jersey = Jersey_10({
   weight: "400",
@@ -18,6 +18,7 @@ const Navbar = () => {
   const active = "text-green01 underline font-semibold";
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   const navigateAndScroll = (to: string) => {
     if (window.location.pathname !== "/") {
@@ -48,7 +49,7 @@ const Navbar = () => {
     <div className="flex flex-col gap-2 lg:gap-4 lg:flex-row">
       {["home", "about", "skills", "projects", "blogs", "contact"].map(
         (section) =>
-          location.pathname === "/" ? (
+          pathname === "/" ? (
             <LinkScroll
               key={section}
               to={section}
@@ -81,7 +82,7 @@ const Navbar = () => {
     >
       <div className="flex items-center justify-between ">
         <Link href={"/"}>
-          <h1 className={`${jersey.className} text-4xl px-2`}>Naim</h1>
+          <h1 className={`${jersey.className} text-3xl px-2`}>Naim</h1>
         </Link>
         <menu>
           <div className="hidden navbar-center lg:flex">
