@@ -21,6 +21,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { login } from "@/actions/auth";
 import { useRouter } from "next/navigation";
+import axiosInstance from "@/lib/axios";
 
 const loginSchema = z.object({
   email: z.email(),
@@ -41,10 +42,14 @@ export function LoginFrom() {
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     const toastId = toast.loading("Please wait....");
     try {
-      const res = await login(values);
+      const data = await axiosInstance.post("/auth/login", values);
+      const res = data.data;
       if (res?.success) {
+        if (res?.data?.accessToken) {
+          localStorage.setItem("access-token", res?.data?.accessToken);
+        }
         toast.success(res?.message, { id: toastId });
-        router.push("/dashboard");
+        router.push("/dashboard/profile");
       } else {
         toast.error(res?.message, { id: toastId });
       }

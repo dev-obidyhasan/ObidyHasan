@@ -13,6 +13,7 @@ import Image from "next/image";
 import { Button } from "../../../ui/button";
 import DashboardItem from "./DashboardItem";
 import Link from "next/link";
+import Logout from "./Logout";
 
 const route = {
   navMain: [
@@ -80,7 +81,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarRail />
       </div>
       <div className="px-2 py-4">
-        <Button className="w-full">Logout</Button>
+        <Logout />
       </div>
     </Sidebar>
   );
