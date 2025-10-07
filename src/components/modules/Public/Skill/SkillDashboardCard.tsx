@@ -45,6 +45,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";
+import { ISkill } from "@/types";
+import { useEffect, useState } from "react";
+import axiosInstance from "@/lib/axios";
+import { toast } from "sonner";
 
 const skillSchema = z.object({
   name: z.string().min(1, { message: "Name can't be empty!" }),
@@ -53,7 +57,8 @@ const skillSchema = z.object({
   content: z.string().optional(),
 });
 
-const SkillDashboardCard = () => {
+const SkillDashboardCard = ({ skill }: { skill: ISkill }) => {
+  const [open, setOpen] = useState(false);
   const form = useForm<z.infer<typeof skillSchema>>({
     resolver: zodResolver(skillSchema),
     defaultValues: {
@@ -64,25 +69,57 @@ const SkillDashboardCard = () => {
     },
   });
 
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await axiosInstance.get(`/skill/${skill.id}`);
+        const skillData = res?.data?.data;
+        if (skillData) {
+          form.reset({
+            name: skillData.name || "",
+            logoUrl: skillData.logoUrl || "",
+            category: skillData.category || "",
+            content: skillData.content || "",
+          });
+        }
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
+      }
+    };
+
+    getUser();
+  }, [form, skill.id]);
+
   async function onSubmit(values: z.infer<typeof skillSchema>) {
-    console.log(values);
+    try {
+      const response = await axiosInstance.patch(`/skill/${skill.id}`, values);
+      if (response?.data?.success) {
+        toast?.success("Skill updated successfully!");
+        form.reset();
+        setOpen(false);
+      }
+    } catch (error) {
+      console.error("Failed to update skill:", error);
+    }
   }
 
   return (
     <div className="border p-4 rounded-sm space-y-3">
       <Image
-        src={profile}
+        src={skill?.logoUrl}
         alt="skill icon"
+        width={80}
+        height={80}
         className="w-20 h-20 object-contain"
       />
       <div className="flex items-center justify-between gap-2">
-        <h1 className="font-medium text-xl">Next JS</h1>
-        <Badge variant={"outline"}>Category</Badge>
+        <h1 className="font-medium text-xl">{skill?.name}</h1>
+        <Badge variant={"outline"}>{skill?.category}</Badge>
       </div>
       <div className="flex items-center justify-between gap-2">
-        <p>Skill Description</p>
+        <p>{skill?.content}</p>
         <div className="flex gap-2">
-          <Dialog>
+          <Dialog open={open} onOpenChange={setOpen}>
             <form>
               <DialogTrigger asChild>
                 <Button size={"icon"} variant={"outline"}>
@@ -99,6 +136,7 @@ const SkillDashboardCard = () => {
                 </DialogHeader>
                 <Form {...form}>
                   <form
+                    id="edit-skill-form"
                     onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-5"
                   >
@@ -141,16 +179,21 @@ const SkillDashboardCard = () => {
                         <FormItem>
                           <FormLabel>Category</FormLabel>
                           <FormControl>
-                            <Select>
+                            <Select
+                              defaultValue={skill?.category}
+                              onValueChange={field.onChange}
+                              {...field.onBlur}
+                              {...field.onChange}
+                            >
                               <SelectTrigger className="w-full">
                                 <SelectValue placeholder="select category" />
                               </SelectTrigger>
                               <SelectContent>
-                                <SelectItem value="frontend">
+                                <SelectItem value="FRONTEND">
                                   Frontend
                                 </SelectItem>
-                                <SelectItem value="backend">Backend</SelectItem>
-                                <SelectItem value="database">
+                                <SelectItem value="BACKEND">Backend</SelectItem>
+                                <SelectItem value="DATABASE">
                                   Database
                                 </SelectItem>
                               </SelectContent>
@@ -165,7 +208,7 @@ const SkillDashboardCard = () => {
                     />
                     <FormField
                       control={form.control}
-                      name="logoUrl"
+                      name="content"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Content</FormLabel>
@@ -185,7 +228,9 @@ const SkillDashboardCard = () => {
                   <DialogClose asChild>
                     <Button variant="outline">Cancel</Button>
                   </DialogClose>
-                  <Button type="submit">Save & Changes</Button>
+                  <Button form="edit-skill-form" type="submit">
+                    Save & Changes
+                  </Button>
                 </DialogFooter>
               </DialogContent>
             </form>

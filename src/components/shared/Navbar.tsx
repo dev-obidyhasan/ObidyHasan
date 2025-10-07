@@ -8,6 +8,8 @@ import { Jersey_10 } from "next/font/google";
 import { Button } from "../ui/button";
 import { MagicCard } from "../ui/magic-card";
 import { usePathname } from "next/navigation";
+import { getUser } from "@/actions/user";
+import axiosInstance from "@/lib/axios";
 
 const jersey = Jersey_10({
   weight: "400",
@@ -19,6 +21,25 @@ const Navbar = () => {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const data = await axiosInstance.get(
+          `/user?email=obidyhasan@gmail.com`
+        );
+        console.log(data?.data?.data);
+        if (data?.data?.data?.id) {
+          setIsLogged(true);
+        }
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
+      }
+    };
+
+    checkUser();
+  }, [router]);
 
   const navigateAndScroll = (to: string) => {
     if (window.location.pathname !== "/") {
@@ -90,9 +111,15 @@ const Navbar = () => {
           </div>
         </menu>
         <div className="w-fit">
-          <Button className="rounded-full" variant={"secondary"} asChild>
-            <Link href={"/login"}>Login</Link>
-          </Button>
+          {isLogged ? (
+            <Button className="rounded-full" variant={"secondary"} asChild>
+              <Link href={"/dashboard/profile"}>Dashboard</Link>
+            </Button>
+          ) : (
+            <Button className="rounded-full" variant={"secondary"} asChild>
+              <Link href={"/login"}>Login</Link>
+            </Button>
+          )}
         </div>
       </div>
     </MagicCard>

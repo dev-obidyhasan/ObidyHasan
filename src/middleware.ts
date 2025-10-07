@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
     console.error("Failed to decode email:", error);
     return NextResponse.redirect(new URL("/login", request.url));
   }
-  if (email !== process.env.ADMIN_EMAIL) {
+  if (email !== process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
   return NextResponse.next();

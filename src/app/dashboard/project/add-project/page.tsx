@@ -14,19 +14,23 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
+import axiosInstance from "@/lib/axios";
+import { useRouter } from "next/navigation";
 
 const projectSchema = z.object({
-  title: z.string().optional(),
-  imageUrl: z.string().optional(),
-  technologies: z.string().optional(),
-  type: z.string().optional(),
-  projectUrl: z.string().optional(),
+  title: z.string().min(1, "Title must be required"),
+  imageUrl: z.string().min(1, "Image Url must be required"),
+  technologies: z.string().min(1, "Technologies must be required"),
+  type: z.string().min(1, "Type must be required"),
+  projectUrl: z.string().min(1, "Project Url must be required"),
   frontendUrl: z.string().optional(),
   backendUrl: z.string().optional(),
-  description: z.string().optional(),
+  description: z.string().min(1, "Description must be required"),
 });
 
 const AddProject = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof projectSchema>>({
     resolver: zodResolver(projectSchema),
     defaultValues: {
@@ -42,7 +46,20 @@ const AddProject = () => {
   });
 
   async function onSubmit(values: z.infer<typeof projectSchema>) {
-    console.log(values);
+    try {
+      const res = await axiosInstance.post("/project", values);
+      console.log(res);
+      if (res?.data?.success) {
+        toast.success("Project added successfully");
+        form.reset();
+        router.push("/dashboard/projects");
+      } else {
+        toast.error("Failed to add project");
+      }
+    } catch (error) {
+      console.error("Error adding project:", error);
+      toast.error("An unexpected error occurred");
+    }
   }
 
   return (
@@ -50,7 +67,11 @@ const AddProject = () => {
       <h1 className="font-medium text-xl">Add Project</h1>
       <div>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+          <form
+            id="add-project"
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-5"
+          >
             <div className="mt-7 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
               <FormField
                 control={form.control}
@@ -190,7 +211,7 @@ const AddProject = () => {
               )}
             />
 
-            <Button className="mt-2" type="submit">
+            <Button form="add-project" className="mt-2" type="submit">
               Submit
             </Button>
           </form>

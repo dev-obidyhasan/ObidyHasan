@@ -16,6 +16,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { useEffect, useState } from "react";
+import axiosInstance from "@/lib/axios";
 
 const loginSchema = z.object({
   name: z.string().optional(),
@@ -35,9 +37,7 @@ const loginSchema = z.object({
   about: z.string().optional(),
 });
 
-export default function Page() {
-  // const router = useRouter();
-
+export default function ProfilePage() {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -58,6 +58,39 @@ export default function Page() {
       about: "",
     },
   });
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await axiosInstance.get(`/user?email=obidyhasan@gmail.com`);
+        const userData = res?.data?.data;
+
+        if (userData) {
+          form.reset({
+            name: userData.name || "",
+            email: userData.email || "",
+            imageUrl: userData.imageUrl || "",
+            facebookUrl: userData.facebookUrl || "",
+            twitterUrl: userData.twitterUrl || "",
+            linkedinUrl: userData.linkedinUrl || "",
+            githubUrl: userData.githubUrl || "",
+            instagramUrl: userData.instagramUrl || "",
+            phone: userData.phone || "",
+            address: userData.address || "",
+            title: userData.title || "",
+            company: userData.company || "",
+            website: userData.website || "",
+            resume: userData.resume || "",
+            about: userData.about || "",
+          });
+        }
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
+      }
+    };
+
+    getUser();
+  }, [form]);
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     console.log(values);

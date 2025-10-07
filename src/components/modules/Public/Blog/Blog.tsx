@@ -22,9 +22,6 @@ const BlogSection = () => {
             <BlogCard />
             <BlogCard />
             <BlogCard />
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
           </div>
 
           <div className="mt-14 text-center">

@@ -10,7 +10,6 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
-import { Button } from "../../../ui/button";
 import DashboardItem from "./DashboardItem";
 import Link from "next/link";
 import Logout from "./Logout";
