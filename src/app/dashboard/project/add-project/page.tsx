@@ -14,18 +14,25 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
-import axiosInstance from "@/lib/axios";
 import { useRouter } from "next/navigation";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { createProject } from "@/actions/project";
+import toast from "react-hot-toast";
 
 const projectSchema = z.object({
   title: z.string().min(1, "Title must be required"),
-  imageUrl: z.string().min(1, "Image Url must be required"),
+  images: z.string().min(1, "Image Url must be required"),
   technologies: z.string().min(1, "Technologies must be required"),
   type: z.string().min(1, "Type must be required"),
   projectUrl: z.string().min(1, "Project Url must be required"),
-  frontendUrl: z.string().optional(),
-  backendUrl: z.string().optional(),
+  frontendRepoUrl: z.string().optional(),
+  backendRepoUrl: z.string().optional(),
   description: z.string().min(1, "Description must be required"),
 });
 
@@ -35,30 +42,42 @@ const AddProject = () => {
     resolver: zodResolver(projectSchema),
     defaultValues: {
       title: "",
-      imageUrl: "",
+      images: "",
       technologies: "",
       type: "",
       projectUrl: "",
-      frontendUrl: "",
-      backendUrl: "",
+      frontendRepoUrl: "",
+      backendRepoUrl: "",
       description: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof projectSchema>) {
     try {
-      const res = await axiosInstance.post("/project", values);
+      const images: string[] = values.images
+        .split(",")
+        .map((img) => img.trim());
+      const technologies: string[] = values.technologies
+        .split(",")
+        .map((img) => img.trim());
+      const formData = {
+        ...values,
+        images: images,
+        technologies: technologies,
+      };
+
+      const res = await createProject(formData);
       console.log(res);
-      if (res?.data?.success) {
-        toast.success("Project added successfully");
+      if (res?.data?.id) {
         form.reset();
-        router.push("/dashboard/projects");
+        router.push("/dashboard/project");
+        toast.success("Project Added successfully");
       } else {
-        toast.error("Failed to add project");
+        toast.error("Something went wrong");
       }
     } catch (error) {
-      console.error("Error adding project:", error);
-      toast.error("An unexpected error occurred");
+      toast.error("Failed to add project");
+      console.error("Failed to add project:", error);
     }
   }
 
@@ -96,7 +115,19 @@ const AddProject = () => {
                   <FormItem>
                     <FormLabel>Type</FormLabel>
                     <FormControl>
-                      <Input placeholder="enter type" {...field} />
+                      <Select
+                        onValueChange={field.onChange}
+                        {...field.onBlur}
+                        {...field.onChange}
+                      >
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="select project type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="PERSONAL">PERSONAL</SelectItem>
+                          <SelectItem value="CLIENT">CLIENT</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </FormControl>
                     <FormDescription className="sr-only">
                       This is your type.
@@ -124,7 +155,7 @@ const AddProject = () => {
               <div className="col-span-2">
                 <FormField
                   control={form.control}
-                  name="imageUrl"
+                  name="images"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Images Url</FormLabel>
@@ -142,7 +173,7 @@ const AddProject = () => {
 
               <FormField
                 control={form.control}
-                name="frontendUrl"
+                name="frontendRepoUrl"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Frontend URL</FormLabel>
@@ -178,7 +209,7 @@ const AddProject = () => {
 
               <FormField
                 control={form.control}
-                name="backendUrl"
+                name="backendRepoUrl"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Backend URL</FormLabel>

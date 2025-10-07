@@ -8,7 +8,7 @@ const SkillPage = async () => {
       tags: ["SKILL"],
     },
   });
-  const { data: skills } = await res.json();
+  const { data: skills = [] } = await res.json();
 
   return (
     <section>
