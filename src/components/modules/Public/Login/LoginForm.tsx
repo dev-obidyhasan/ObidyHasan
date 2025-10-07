@@ -18,10 +18,9 @@ import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 import { login } from "@/actions/auth";
 import { useRouter } from "next/navigation";
-import axiosInstance from "@/lib/axios";
+import toast from "react-hot-toast";
 
 const loginSchema = z.object({
   email: z.email(),
@@ -40,22 +39,18 @@ export function LoginFrom() {
   });
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
-    const toastId = toast.loading("Please wait....");
     try {
-      const data = await axiosInstance.post("/auth/login", values);
-      const res = data.data;
+      const res = await login(values);
+      console.log(res);
       if (res?.success) {
-        if (res?.data?.accessToken) {
-          localStorage.setItem("access-token", res?.data?.accessToken);
-        }
-        toast.success(res?.message, { id: toastId });
+        toast.success("Logged In successfully");
         router.push("/dashboard/profile");
       } else {
-        toast.error(res?.message, { id: toastId });
+        toast.error(res?.message || "Something went wrong");
       }
-    } catch (err) {
-      toast.error("Something went wrong!", { id: toastId });
-      console.error(err);
+    } catch (error) {
+      console.error("Failed to login:", error);
+      toast.error("Something went wrong");
     }
   }
 

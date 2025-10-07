@@ -1,5 +1,4 @@
 import Image from "next/image";
-import profile from "@/assets/profile.png";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MdOutlineEdit } from "react-icons/md";

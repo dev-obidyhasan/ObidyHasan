@@ -1,20 +1,19 @@
 "use client";
+import { logout } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
-import axiosInstance from "@/lib/axios";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import toast from "react-hot-toast";
 
 const Logout = () => {
   const route = useRouter();
   const handleLogout = async () => {
-    const toastId = toast.loading("Logging out...");
     try {
-      await axiosInstance.post("/auth/logout");
-      toast.success("Logged out successfully!", { id: toastId });
+      await logout();
+      toast.success("Logged out successfully!");
       route.push("/login");
     } catch (error) {
       console.log("Logout error:", error);
-      toast.error("Failed to logout. Please try again.", { id: toastId });
+      toast.error("Failed to logout. Please try again.");
     }
   };
 

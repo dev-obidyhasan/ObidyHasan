@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import ProjectCard from "../Project/ProjectCard";
 import BlogCard from "./BlogCard";
 
 const BlogSection = () => {

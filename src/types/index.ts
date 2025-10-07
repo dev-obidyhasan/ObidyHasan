@@ -37,3 +37,24 @@ export interface IBlog {
   viewCount: number;
   createdAt: string;
 }
+
+export interface IProfile {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+  imgUrl: string;
+  about: string;
+  facebookUrl: string;
+  twitterUrl: string;
+  linkedinUrl: string;
+  githubUrl: string;
+  instagramUrl: string;
+  phoneNumber: string;
+  address: string;
+  title: string;
+  company: string;
+  website: string;
+  resumeUrl: string;
+}
