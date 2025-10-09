@@ -1,3 +1,4 @@
+"use client";
 import { FieldValues } from "react-hook-form";
 
 export const login = async (data: FieldValues) => {
@@ -6,8 +7,8 @@ export const login = async (data: FieldValues) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
     credentials: "include",
+    body: JSON.stringify(data),
   });
 
   return await res?.json();
@@ -21,6 +22,5 @@ export const logout = async () => {
     },
     credentials: "include",
   });
-
   return await res?.json();
 };

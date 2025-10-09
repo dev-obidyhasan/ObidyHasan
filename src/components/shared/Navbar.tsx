@@ -11,9 +11,6 @@ const jersey = Jersey_10({
 });
 
 const Navbar = () => {
-  const isLoggedIn = () => {
-    return false;
-  };
   return (
     <div className="max-w-6xl mx-auto sticky top-4 px-4  z-[100]">
       <MagicCard
@@ -31,7 +28,7 @@ const Navbar = () => {
           </div>
           <NavbarMenu />
           <div className="w-fit">
-            {isLoggedIn() ? (
+            {false ? (
               <Button className="rounded-full" variant={"secondary"} asChild>
                 <Link href={"/dashboard/profile"}>Dashboard</Link>
               </Button>
