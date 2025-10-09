@@ -67,7 +67,6 @@ const AddProject = () => {
       };
 
       const res = await createProject(formData);
-      console.log(res);
       if (res?.data?.id) {
         form.reset();
         router.push("/dashboard/project");
@@ -158,7 +157,7 @@ const AddProject = () => {
                   name="images"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Images Url</FormLabel>
+                      <FormLabel>Images Urls (Separate by Commas)</FormLabel>
                       <FormControl>
                         <Input placeholder="enter image urls" {...field} />
                       </FormControl>
@@ -194,7 +193,7 @@ const AddProject = () => {
                   name="technologies"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Technologies</FormLabel>
+                      <FormLabel>Technologies (Separate by Commas)</FormLabel>
                       <FormControl>
                         <Input placeholder="enter technologies" {...field} />
                       </FormControl>

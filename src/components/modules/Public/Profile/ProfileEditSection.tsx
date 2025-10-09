@@ -61,9 +61,7 @@ const ProfileEditSection = ({ profile }: { profile: IProfile }) => {
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     try {
-      console.log(values);
       const res = await updateUser(Number(profile.id), values);
-      console.log(res);
       if (res?.success && res?.data?.id) {
         toast.success("Profile Updated successfully");
       } else {

@@ -62,7 +62,6 @@ const SkillEditDialog = ({ skill }: { skill: ISkill }) => {
   async function onSubmit(values: z.infer<typeof skillSchema>) {
     try {
       const res = await updateSkill(Number(skill.id), values);
-      console.log(res);
       if (res?.success && res?.data?.id) {
         setOpen(false);
         router.refresh();

@@ -92,6 +92,7 @@ const ProjectDetails = async ({
                 project?.images?.map((image: string, index: number) => (
                   <CarouselItem key={index}>
                     <Image
+                      loading="lazy"
                       className="w-full max-h-[600px] object-top object-contain sm:object-cover  rounded-sm"
                       src={image}
                       alt="project image"

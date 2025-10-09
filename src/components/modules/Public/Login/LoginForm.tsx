@@ -41,7 +41,6 @@ export function LoginFrom() {
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     try {
       const res = await login(values);
-      console.log(res);
       if (res?.success) {
         toast.success("Logged In successfully");
         router.push("/dashboard/profile");

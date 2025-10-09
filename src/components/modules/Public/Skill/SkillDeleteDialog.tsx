@@ -21,7 +21,6 @@ const SkillDeleteDialog = ({ skill }: { skill: ISkill }) => {
   const handleDeleteSkill = async () => {
     try {
       const res = await deleteSkill(Number(skill.id));
-      console.log(res);
       if (res?.success && res?.data?.id) {
         router.refresh();
         toast.success("Skill deleted successfully");

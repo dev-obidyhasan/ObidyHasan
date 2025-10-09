@@ -152,9 +152,9 @@ const ProjectEditSection = ({ project }: { project: IProject }) => {
                 name="images"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Images Url</FormLabel>
+                    <FormLabel>Images Urls (Separate by Commas)</FormLabel>
                     <FormControl>
-                      <Input placeholder="enter image urls" {...field} />
+                      <Input placeholder="enter image urls " {...field} />
                     </FormControl>
                     <FormDescription className="sr-only">
                       This is your image urls.
@@ -188,7 +188,7 @@ const ProjectEditSection = ({ project }: { project: IProject }) => {
                 name="technologies"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Technologies</FormLabel>
+                    <FormLabel>Technologies (Separate by Commas)</FormLabel>
                     <FormControl>
                       <Input placeholder="enter technologies" {...field} />
                     </FormControl>
