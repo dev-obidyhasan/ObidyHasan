@@ -1,10 +1,11 @@
 import { ShineBorder } from "@/components/ui/shine-border";
 import { IProject } from "@/types";
 import Image from "next/image";
+import Link from "next/link";
 
 const ProjectCard = ({ project }: { project: IProject }) => {
   return (
-    <>
+    <Link href={`/projects/${project?.id}`}>
       <div className="relative duration-300 transform rounded-md cursor-pointer hover:-translate-y-3">
         <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
         <figure>
@@ -29,7 +30,7 @@ const ProjectCard = ({ project }: { project: IProject }) => {
           </div>
         </div>
       </div>
-    </>
+    </Link>
   );
 };
 

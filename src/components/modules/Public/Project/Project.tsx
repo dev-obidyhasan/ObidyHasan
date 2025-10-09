@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import ProjectCard from "./ProjectCard";
 import { IProject } from "@/types";
+import Link from "next/link";
 
 const ProjectSection = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/project`, {
@@ -33,7 +34,9 @@ const ProjectSection = async () => {
 
           {/* All Project Button */}
           <div className="mt-14 text-center">
-            <Button>Explore All Projects</Button>
+            <Button>
+              <Link href="projects">Explore All Projects</Link>
+            </Button>
           </div>
         </div>
       </div>
