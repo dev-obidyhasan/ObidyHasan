@@ -52,7 +52,7 @@ const AboutSection = () => {
                 duration={500}
                 className="relative mt-8 btn btn-outline text-light01 font-fira"
               >
-                <div className="relative w-max rounded-full">
+                <div className="relative w-max rounded-full mx-auto sm:mx-0">
                   <Button variant={"ghost"} className="rounded-full px-6 py-5">
                     Explore Projects
                   </Button>

@@ -3,48 +3,10 @@ import { FaLocationArrow } from "react-icons/fa";
 import { IoPhonePortrait } from "react-icons/io5";
 import { FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { Textarea } from "@/components/ui/textarea";
-// import emailjs from "@emailjs/browser";
-import { useRef, useState } from "react";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-// import {
-//   showErrorMessage,
-//   showSuccessMessage,
-// } from "../../utility/ShowToastMessage";
+import ContactForm from "./ContactForm";
 
 const ContactSection = () => {
-  //   const form = useRef();
-  const [btnIsLoading, setBtnIsLoading] = useState(false);
-
-  //   const sendEmail = (e) => {
-  //     e.preventDefault();
-  //     setBtnIsLoading(true);
-
-  //     emailjs
-  //       .sendForm(
-  //         `${import.meta.env.VITE_YOUR_SERVICE_ID}`,
-  //         `${import.meta.env.VITE_YOUR_TEMPLATE_ID}`,
-  //         form.current,
-  //         {
-  //           publicKey: `${import.meta.env.VITE_YOUR_PUBLIC_KEY}`,
-  //         }
-  //       )
-  //       .then(
-  //         () => {
-  //           showSuccessMessage("Email send Successfully");
-  //           form.current.reset();
-  //           setBtnIsLoading(false);
-  //         },
-  //         (error) => {
-  //           showErrorMessage("Something went wrong!");
-  //           console.log("FAILED...", error.text);
-  //           setBtnIsLoading(false);
-  //         }
-  //       );
-  //   };
-
   return (
     <div id="contact">
       <div className="px-5 py-16 mx-auto max-w-6xl">
@@ -103,58 +65,7 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Form */}
-          <div>
-            <div className="w-full">
-              {/* <form ref={form} onSubmit={sendEmail} className="font-fira"> */}
-              <form>
-                <div className="form-control">
-                  <label className="">
-                    <span className="label-text text-light01 ">Name</span>
-                  </label>
-                  <Input
-                    type="text"
-                    name="from_name"
-                    placeholder="name"
-                    className="mt-2 mb-3 bg-transparent border Input border-dart02 focus:border-green01"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="">
-                    <span className="label-text text-light01 ">Email</span>
-                  </label>
-                  <Input
-                    type="email"
-                    name="from_email"
-                    placeholder="email"
-                    className="mt-2 mb-3 bg-transparent border Input border-dart02 focus:border-green01"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="">
-                    <span className="label-text text-light01 ">Message</span>
-                  </label>
-                  <Textarea
-                    required
-                    name="message"
-                    className="mt-2 mb-3 bg-transparent border textarea border-dart02 focus:border-green01 min-h-28"
-                    placeholder="message"
-                  ></Textarea>
-                </div>
-                <div className="mt-6 form-control">
-                  {btnIsLoading ? (
-                    <Button disabled className="btn disabled:bg-dart03">
-                      <span className="loading loading-spinner loading-md"></span>{" "}
-                      Sending...
-                    </Button>
-                  ) : (
-                    <Button>Send Email</Button>
-                  )}
-                </div>
-              </form>
-            </div>
-          </div>
+          <ContactForm />
         </div>
       </div>
     </div>

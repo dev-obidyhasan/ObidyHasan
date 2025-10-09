@@ -1,10 +1,22 @@
 import AnimatedDots from "@/components/ui/animated-dots";
 import { Button } from "@/components/ui/button";
 import Earth from "@/components/ui/globe";
+import { IProfile } from "@/types";
 import Link from "next/link";
 import { FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
 
-const HeroSection = () => {
+const HeroSection = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/user?email=${process.env.NEXT_PUBLIC_ADMIN_EMAIL}`,
+    {
+      next: {
+        revalidate: 30,
+      },
+    }
+  );
+  const { data } = await res.json();
+  const profile: IProfile = data;
+
   return (
     <div id="home">
       {/* Hero Section */}
@@ -14,10 +26,12 @@ const HeroSection = () => {
           <section className="w-full mx-auto absolute top-1/5 z-50">
             <div className="flex flex-col items-center justify-center px-5 mx-auto text-center max-w-6xl">
               <h2 className="flex items-center gap-2 mt-2 text-base sm:text-lg">
-                <span>Hey There, This is Obidy Hasan Naim</span>
+                <span>
+                  Hey There, This is {profile.name || `Obidy Hasan Naim`}
+                </span>
               </h2>
               <h1 className="font-fira font-semibold text-4xl sm:text-5xl md:text-7xl my-5">
-                Full-Stack Web Developer
+                {profile?.title || `Full-Stack Web Developer`}
               </h1>
 
               <p className="max-w-xl text-sm sm:text-base mx-auto">
@@ -25,37 +39,34 @@ const HeroSection = () => {
                 to process development was enjoyable.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-3 mt-5">
-                <Button variant={"outline"}>
-                  <Link
-                    href={
-                      "https://drive.google.com/file/d/17YmDiTyI5wda3sGpmNT4Oe1XRTey0q1S/view?usp=sharing"
-                    }
-                    target="_blank"
-                  >
-                    Resume
-                  </Link>
-                </Button>
-                <Button variant={"outline"} size={"icon"}>
-                  <Link href={"https://github.com/obidyhasan"} target="_blank">
-                    <FaGithub className="text-xl"></FaGithub>
-                  </Link>
-                </Button>
-                <Button variant={"outline"} size={"icon"}>
-                  <Link
-                    href={"https://www.linkedin.com/in/obidyhasan/"}
-                    target="_blank"
-                  >
-                    <FaLinkedinIn className="text-xl"></FaLinkedinIn>
-                  </Link>
-                </Button>
-                <Button variant={"outline"} size={"icon"}>
-                  <Link
-                    href={"https://www.facebook.com/obidyhasan/"}
-                    target="_blank"
-                  >
-                    <FaFacebookF className="text-xl"></FaFacebookF>
-                  </Link>
-                </Button>
+                {profile?.resumeUrl && (
+                  <Button variant={"outline"}>
+                    <Link href={profile?.resumeUrl} target="_blank">
+                      Resume
+                    </Link>
+                  </Button>
+                )}
+                {profile?.githubUrl && (
+                  <Button variant={"outline"} size={"icon"}>
+                    <Link href={profile?.githubUrl} target="_blank">
+                      <FaGithub className="text-xl"></FaGithub>
+                    </Link>
+                  </Button>
+                )}
+                {profile?.linkedinUrl && (
+                  <Button variant={"outline"} size={"icon"}>
+                    <Link href={profile?.linkedinUrl} target="_blank">
+                      <FaLinkedinIn className="text-xl"></FaLinkedinIn>
+                    </Link>
+                  </Button>
+                )}
+                {profile?.facebookUrl && (
+                  <Button variant={"outline"} size={"icon"}>
+                    <Link href={profile?.facebookUrl} target="_blank">
+                      <FaFacebookF className="text-xl"></FaFacebookF>
+                    </Link>
+                  </Button>
+                )}
               </div>
             </div>
           </section>

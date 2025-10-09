@@ -1,7 +1,14 @@
-import { Button } from "@/components/ui/button";
 import BlogCard from "./BlogCard";
+import { IBlog } from "@/types";
 
-const BlogSection = () => {
+const BlogSection = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/blog`, {
+    next: {
+      revalidate: 30,
+    },
+  });
+  const { data: blogs = [] } = await res.json();
+
   return (
     <div id="blogs">
       <div className="px-4 py-16 mx-auto max-w-6xl">
@@ -18,13 +25,9 @@ const BlogSection = () => {
         {/* Blog Card */}
         <div className="mt-16">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
-          </div>
-
-          <div className="mt-14 text-center">
-            <Button>Explore All Blogs</Button>
+            {blogs?.map((blog: IBlog) => (
+              <BlogCard key={blog.id} blog={blog} />
+            ))}
           </div>
         </div>
       </div>

@@ -1,7 +1,15 @@
 import { Button } from "@/components/ui/button";
 import ProjectCard from "./ProjectCard";
+import { IProject } from "@/types";
 
-const ProjectSection = () => {
+const ProjectSection = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/project`, {
+    next: {
+      revalidate: 30,
+    },
+  });
+  const { data: projects = [] } = await res.json();
+
   return (
     <div id="projects">
       <div className="px-4 py-16 mx-auto max-w-6xl">
@@ -18,9 +26,9 @@ const ProjectSection = () => {
         {/* Project Card */}
         <div className="mt-16">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
+            {projects?.slice(0, 3).map((project: IProject) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
           </div>
 
           {/* All Project Button */}

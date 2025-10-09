@@ -1,28 +1,28 @@
 import { ShineBorder } from "@/components/ui/shine-border";
+import { IBlog } from "@/types";
 import Image from "next/image";
 
-const BlogCard = () => {
+const BlogCard = ({ blog }: { blog: IBlog }) => {
   return (
     <>
       <div className="relative duration-300 transform rounded-md cursor-pointer hover:-translate-y-3">
         <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
-        <div className="w-full h-full flex flex-col  p-5">
-          <div className="w-full">
+        <div className="w-full h-full flex flex-col p-5">
+          <div className="w-full grow">
             <h1 className="text-lg font-semibold font-fira min-h-14">
-              Project name
+              {blog?.title || "No title available"}
             </h1>
             <p className="mt-2 text-sm line-clamp-2 text-dart03">
-              project description
+              {blog?.content || "No description available"}
             </p>
-            <div className="w-full mt-5 btn btn-outline text-light01 font-fira">
-              View Project Details
-            </div>
           </div>
-          <figure>
+          <figure className="mt-4">
             <Image
-              src=""
+              src={blog?.imgUrl[0] || ""}
               className="w-full h-[270px] object-cover object-top rounded-md"
               alt="project image"
+              width={400}
+              height={270}
             />
           </figure>
         </div>

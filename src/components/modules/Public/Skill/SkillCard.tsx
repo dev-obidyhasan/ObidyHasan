@@ -1,17 +1,8 @@
 import { cn } from "@/lib/utils";
+import { ISkill } from "@/types";
 import Image from "next/image";
 
-export const SkillCard = ({
-  img,
-  name,
-  username,
-  body,
-}: {
-  img: string;
-  name: string;
-  username: string;
-  body: string;
-}) => {
+export const SkillCard = ({ skill }: { skill: ISkill }) => {
   return (
     <figure
       className={cn(
@@ -20,21 +11,20 @@ export const SkillCard = ({
     >
       <div className="flex flex-row items-center gap-2">
         <Image
-          className="rounded-full"
+          className="object-contain"
           width="60"
           height="60"
           alt="skill icon"
-          src={img}
+          src={skill?.logoUrl || ""}
         />
         <div className="flex flex-col">
           <figcaption className="text-sm font-medium dark:text-white">
-            {name}
+            {skill?.name}
           </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username}</p>
         </div>
       </div>
       <blockquote className="mt-2 text-xs text-start line-clamp-2">
-        {body}
+        {skill?.content}
       </blockquote>
     </figure>
   );
