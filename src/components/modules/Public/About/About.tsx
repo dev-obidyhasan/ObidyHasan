@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Link as LinkScroll } from "react-scroll";
 import profile from "@/assets/profile.png";
-import { BorderBeam } from "@/components/ui/border-beam";
 import { ShineBorder } from "@/components/ui/shine-border";
 
 const AboutSection = () => {
