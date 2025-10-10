@@ -18,9 +18,9 @@ import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { login } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import axiosInstance from "@/lib/axios";
 
 const loginSchema = z.object({
   email: z.email(),
@@ -40,12 +40,16 @@ export function LoginFrom() {
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     try {
-      const res = await login(values);
-      if (res?.success) {
+      const res = await axiosInstance.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`,
+        values
+      );
+      console.log(res);
+      if (res?.data?.success) {
         toast.success("Logged In successfully");
         router.push("/dashboard/profile");
       } else {
-        toast.error(res?.message || "Something went wrong");
+        toast.error(res?.data?.message || "Something went wrong");
       }
     } catch (error) {
       console.error("Failed to login:", error);
@@ -58,7 +62,14 @@ export function LoginFrom() {
       <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
       <CardHeader className="flex flex-col items-center justify-center gap-2 text-center">
         <Link href={"/"}>
-          <Image src={logo} alt="logo" className="w-8 h-8 rounded-lg" />
+          <Image
+            loading="lazy"
+            src={logo}
+            alt="logo"
+            width={32}
+            height={32}
+            className="w-8 h-8 rounded-lg"
+          />
         </Link>
         <h1 className="font-medium text-2xl">Login</h1>
         <p className="text-xs">Enter your credentials to access your account</p>

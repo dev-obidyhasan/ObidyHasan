@@ -1,4 +1,3 @@
-import BlogCard from "./BlogCard";
 import { IBlog } from "@/types";
 import ShowBlogDialog from "./ShowBlogDialog";
 

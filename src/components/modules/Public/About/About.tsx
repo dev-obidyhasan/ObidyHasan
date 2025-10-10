@@ -13,9 +13,12 @@ const AboutSection = () => {
           <div className="w-full sm:w-4/6 md:w-2/6">
             <figure className="w-full h-[500px]">
               <Image
+                loading="lazy"
                 src={profile}
-                className="object-cover w-full h-full rounded-full bg-dart02"
+                className="object-cover w-full h-full rounded-full"
                 alt=""
+                width={300}
+                height={300}
               />
             </figure>
           </div>

@@ -38,6 +38,7 @@ const ShowBlogDialog = ({ blog }: { blog: IBlog }) => {
                       blog?.imgUrl?.map((image: string, index: number) => (
                         <CarouselItem key={index}>
                           <Image
+                            loading="lazy"
                             src={image || ""}
                             className="w-full h-[270px] object-cover object-top rounded-md"
                             alt="project image"

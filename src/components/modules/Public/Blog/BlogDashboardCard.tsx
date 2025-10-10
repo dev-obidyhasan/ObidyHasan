@@ -22,6 +22,7 @@ const BlogDashboardCard = ({ blog }: { blog: IBlog }) => {
               blog?.imgUrl?.map((image: string, index: number) => (
                 <CarouselItem key={index}>
                   <Image
+                    loading="lazy"
                     className="w-full h-[300px] object-cover rounded-sm"
                     src={image}
                     alt="project image"

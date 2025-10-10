@@ -11,6 +11,7 @@ export const SkillCard = ({ skill }: { skill: ISkill }) => {
     >
       <div className="flex flex-row items-center gap-2">
         <Image
+          loading="lazy"
           className="object-contain"
           width="60"
           height="60"

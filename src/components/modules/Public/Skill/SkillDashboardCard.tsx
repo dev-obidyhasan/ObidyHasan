@@ -9,6 +9,7 @@ const SkillDashboardCard = ({ skill }: { skill: ISkill }) => {
   return (
     <div className="border p-4 rounded-sm space-y-3">
       <Image
+        loading="lazy"
         src={skill?.logoUrl}
         alt="skill icon"
         width={80}

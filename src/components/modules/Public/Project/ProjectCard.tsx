@@ -10,6 +10,7 @@ const ProjectCard = ({ project }: { project: IProject }) => {
         <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
         <figure>
           <Image
+            loading="lazy"
             src={project?.images[0] || ""}
             className="w-full h-[500px] object-cover object-top rounded-md"
             alt="project image"

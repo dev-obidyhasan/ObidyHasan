@@ -18,6 +18,7 @@ const BlogCard = ({ blog }: { blog: IBlog }) => {
           </div>
           <figure className="mt-4">
             <Image
+              loading="lazy"
               src={blog?.imgUrl[0] || ""}
               className="w-full h-[270px] object-cover object-top rounded-md"
               alt="project image"

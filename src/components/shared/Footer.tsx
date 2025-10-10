@@ -24,7 +24,12 @@ const Footer = async () => {
         <div className="flex flex-wrap items-center justify-between gap-5 ">
           <Link href={"/"} className="flex items-center gap-2 mx-auto sm:mx-0">
             <figure>
-              <Image src={logo} className="w-10 h-10" alt="logo" />
+              <Image
+                loading="lazy"
+                src={logo}
+                className="w-10 h-10"
+                alt="logo"
+              />
             </figure>
             <h1 className="text-lg font-bold font-fira">Obidy Hasan</h1>
           </Link>

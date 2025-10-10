@@ -46,6 +46,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarHeader className="m-2">
           <Link href={"/"} className="flex items-center gap-2">
             <Image
+              loading="lazy"
               src="https://res.cloudinary.com/drkyqxkqw/image/upload/v1756707585/picofme_6_a_rosa65.png"
               alt="profile image"
               width={40}

@@ -76,6 +76,7 @@ const ProfileEditSection = ({ profile }: { profile: IProfile }) => {
     <div>
       <div>
         <Image
+          loading="lazy"
           src={profile?.imgUrl}
           alt="profile"
           width={160}

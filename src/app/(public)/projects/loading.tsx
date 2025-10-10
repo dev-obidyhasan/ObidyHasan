@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function WorkHighlightsSkeleton() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col max-w-6xl mx-auto">
       <header className="px-6 py-4 flex justify-between items-center">
         <Skeleton className="h-6 w-24 rounded-md" />
 
