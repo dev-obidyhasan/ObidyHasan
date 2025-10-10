@@ -40,12 +40,12 @@ export function LoginFrom() {
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     try {
-      const res = await axiosInstance.post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`,
-        values
-      );
+      const res = await axiosInstance.post("/auth/login", values);
       console.log(res);
       if (res?.data?.success) {
+        if (res?.data?.accessToken) {
+          localStorage.setItem("accessToken", res?.data?.accessToken);
+        }
         toast.success("Logged In successfully");
         router.push("/dashboard/profile");
       } else {
