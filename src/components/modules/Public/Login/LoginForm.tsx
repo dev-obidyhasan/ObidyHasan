@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { login } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import axiosInstance from "@/lib/axios";
@@ -41,11 +42,7 @@ export function LoginFrom() {
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     try {
       const res = await axiosInstance.post("/auth/login", values);
-      console.log(res);
       if (res?.data?.success) {
-        if (res?.data?.accessToken) {
-          localStorage.setItem("accessToken", res?.data?.accessToken);
-        }
         toast.success("Logged In successfully");
         router.push("/dashboard/profile");
       } else {

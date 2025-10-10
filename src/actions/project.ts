@@ -1,13 +1,10 @@
 import { FieldValues } from "react-hook-form";
 
-const token = localStorage.getItem("accessToken");
-
 export const createProject = async (data: FieldValues) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/project`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      ...(token && { Authorization: token }),
     },
     body: JSON.stringify(data),
     credentials: "include",
@@ -21,7 +18,6 @@ export const getAllProjects = async () => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      ...(token && { Authorization: token }),
     },
   });
 
@@ -32,7 +28,6 @@ export const getSingleProjects = async (id: number) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      ...(token && { Authorization: token }),
     },
   });
 
@@ -44,7 +39,6 @@ export const updateProject = async (id: number, data: FieldValues) => {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      ...(token && { Authorization: token }),
     },
     body: JSON.stringify(data),
     credentials: "include",
@@ -56,10 +50,6 @@ export const updateProject = async (id: number, data: FieldValues) => {
 export const deleteProject = async (id: number) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/project/${id}`, {
     method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      ...(token && { Authorization: token }),
-    },
     credentials: "include",
   });
 
