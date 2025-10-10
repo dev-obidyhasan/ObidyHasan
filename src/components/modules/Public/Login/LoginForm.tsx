@@ -4,7 +4,9 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ShineBorder } from "@/components/ui/shine-border";
 import Image from "next/image";
 import logo from "@/assets/logo-icon.png";
+import Cookies from "js-cookie";
 import Link from "next/link";
+
 import {
   Form,
   FormControl,
@@ -19,9 +21,9 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import axiosInstance from "@/lib/axios";
+import { useRouter } from "next/navigation";
 
 const loginSchema = z.object({
   email: z.email(),
@@ -29,8 +31,7 @@ const loginSchema = z.object({
 });
 
 export function LoginFrom() {
-  const router = useRouter();
-
+  const route = useRouter();
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -43,8 +44,18 @@ export function LoginFrom() {
     try {
       const res = await axiosInstance.post("/auth/login", values);
       if (res?.data?.success) {
+        const token = res.data.data.accessToken;
+        const email = res.data.data.email;
+        Cookies.set("accessToken", token, {
+          expires: 7,
+          path: "/",
+        });
+        Cookies.set("email", email, {
+          expires: 7,
+          path: "/",
+        });
+        route.push("/dashboard/profile");
         toast.success("Logged In successfully");
-        router.push("/dashboard/profile");
       } else {
         toast.error(res?.data?.message || "Something went wrong");
       }

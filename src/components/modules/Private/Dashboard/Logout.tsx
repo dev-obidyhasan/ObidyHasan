@@ -1,14 +1,16 @@
 "use client";
-import { logout } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 
 const Logout = () => {
   const route = useRouter();
+
   const handleLogout = async () => {
     try {
-      await logout();
+      Cookies.remove("accessToken", { path: "/" });
+      Cookies.remove("email", { path: "/" });
       toast.success("Logged out successfully!");
       route.push("/login");
     } catch (error) {

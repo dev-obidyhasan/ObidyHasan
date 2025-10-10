@@ -1,9 +1,11 @@
+"use client";
 import Link from "next/link";
 import { Jersey_10 } from "next/font/google";
 import { Button } from "../ui/button";
 import { MagicCard } from "../ui/magic-card";
 import NavbarMenu from "../modules/Public/Navbar/NavbarMenu";
 import NavbarPopover from "../modules/Public/Navbar/NavbarPopover";
+import Cookies from "js-cookie";
 
 const jersey = Jersey_10({
   weight: "400",
@@ -11,6 +13,20 @@ const jersey = Jersey_10({
 });
 
 const Navbar = () => {
+  function isLoggedIn() {
+    const token = Cookies.get("accessToken");
+    const email = Cookies.get("email");
+
+    if (!token || !email) {
+      return false;
+    }
+
+    if (email !== process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
+      return false;
+    }
+    return true;
+  }
+
   return (
     <div className="max-w-6xl mx-auto sticky top-4 px-4  z-[100]">
       <MagicCard
@@ -28,7 +44,7 @@ const Navbar = () => {
           </div>
           <NavbarMenu />
           <div className="w-fit">
-            {false ? (
+            {isLoggedIn() ? (
               <Button className="rounded-full" variant={"secondary"} asChild>
                 <Link href={"/dashboard/profile"}>Dashboard</Link>
               </Button>
