@@ -26,8 +26,8 @@ This portfolio site serves as a digital resume, highlighting:
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: React, Next.js
-- **Styling**: CSS, Tailwind CSS
+- **Frontend**: Next.js
+- **Styling**: CSS, Tailwind CSS, ShadCn
 - **Deployment**: Vercel
 
 ## ⚙️ Setup Instructions
